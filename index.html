@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amicability</title>
+    <script type="text/javascript">
+        num1 = prompt("Enter first number");
+        num2 = 0;
+        while (num1 >= num2) {
+            num2 = prompt("Enter second number (Must be larger than first number");
+        }
+
+        function isAmicable(x, y) {
+            amicable = false;
+            sum_divisible = 0; 
+            divisor = x / 2;
+
+            for (i = 1; i <= divisor + 1; i++) {
+                if (x % i == 0) {
+                    sum_divisible += i;
+                }
+            }
+            
+            if (sum_divisible == y) {
+                amicable = true;
+            } 
+
+            return amicable;
+        }
+
+        function factors(z) {
+            sum_divisible = 0; 
+            divisor = z / 2;
+            factors = [];
+
+            for (i = 0; i <= divisor; i++) {
+                if (z % i == 0) {
+                    factors.push(i)
+                }
+            }
+
+            return factors;
+        }
+
+        check1 = isAmicable(num1, num2);
+        check2 = isAmicable(num2, num1);
+
+        factors_num1 = factors(num1);
+        factors_num2 = factors(num2);
+
+        document.getElementById('factorsnum1').innerHTML = "Factors of " + 
+        num1 + ": " + factors_num1;
+        document.getElementById('factorsnum2').innerHTML = "Factors of " + 
+        num2 + ": " + factors_num2;
+
+        
+        if (check1 == true && check2 == true) {
+            document.getElementById("read").innerHTML = "The numbers: " + num1
+            + " and " + num2 + " are amicable.";
+        } else {
+            document.getElementById("read").innerHTML = "The numbers: " + num1
+            + " and " + num2 + " are not amicable.";
+        }
+    </script>
+</head>
+<body>
+
+    <div class="factornums">
+        <p id="factorsnum1"></p>
+        <p id="factorsnum2"></p>
+    </div>
+
+    <div class="readout">
+        <p id="read"></p>
+    </div>
+    
+</body>
+</html>
